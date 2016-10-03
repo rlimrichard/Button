@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="48px" height="55px" viewBox="0 0 48 55" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>Slice 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="btn_mark-black_1a" sketch:type="MSLayerGroup" transform="translate(2.000000, 2.000000)">
+            <g id="ic_button-mark-white" transform="translate(0.014862, 0.032483)" sketch:type="MSShapeGroup">
+                <path d="M26.878895,43.7564725 C36.7332355,41.5466822 44.0982984,32.7179493 44.0982984,22.1630272 C44.0982984,9.94323944 34.226558,0.0371441837 22.0491492,0.0371441837 C9.87174035,0.0371441837 0,9.94323944 0,22.1630272 C0,32.7179493 7.36506284,41.5466822 17.2194034,43.7564725 L22.0491492,51.0968743 L26.8788873,43.7564742 Z" id="Oval-3" stroke="#016FC4" stroke-width="3.64663058"></path>
+                <g id="Group" transform="translate(12.738331, 12.977681)" fill="#016FC4">
+                    <rect id="Rectangle-7" x="10.6152755" y="0.0371441837" width="7.58233963" height="7.59817412" rx="1.82331529"></rect>
+                    <rect id="Rectangle-8" x="0" y="0.0371441837" width="7.58233963" height="7.59817412" rx="1.82331529"></rect>
+                    <rect id="Rectangle-10" x="10.6152755" y="10.674588" width="7.58233963" height="7.59817412" rx="1.82331529"></rect>
+                    <rect id="Rectangle-9" x="0" y="10.674588" width="7.58233963" height="7.59817412" rx="1.82331529"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

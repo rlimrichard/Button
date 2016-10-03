@@ -1,0 +1,278 @@
+.custom-header {
+  color: #9B9FAA;
+}
+
+.custom-header h2 {
+  color: #9B9FAA;
+  font-size: 2.5em;
+}
+
+.partner-img {
+  margin: 40px 0;
+}
+
+.feature {
+    margin-bottom: 160px;
+}
+
+.placeholder {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.partners {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.partner-preview {
+    margin-bottom: 20px;
+}
+
+.partner-highlight {
+    text-align: center;
+}
+
+.partner-highlight {
+    margin: -80px 0 5px 0;
+}
+
+.app-icon {
+    display: block;
+    margin: 80px auto -20px auto;
+}
+
+/**
+Press Page
+**/
+.story {
+    color: #016FC4;
+    font-size: 1.2em;
+}
+
+.date {
+    color: #b7b7b7;
+    font-size: 0.9em;
+    font-style: italic;
+    margin-top:-5px;
+}
+
+.page-description {
+    max-width:800px;
+    margin-left:auto;
+    margin-right:auto;
+    padding:20px;
+    margin-top:-40px;
+}
+
+.page-description p {
+    color: #9B9FAA;
+}
+
+.press-item {
+  margin-top:50px !important; 
+}
+
+.press-item-description {
+  margin-top:-10px;
+}
+
+.press-item h3 {
+  margin-top:0px;
+}
+
+.press-image {
+  filter:         url(~"data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  -webkit-filter: grayscale(100%);
+  -moz-filter:    grayscale(100%);
+  -ms-filter:     grayscale(100%);
+  -o-filter:      grayscale(100%);
+  opacity:        0.4;
+
+  max-height:     120px !important;
+  margin-bottom: 20px;
+}
+
+.press-image img {
+  max-width:100%  !important;
+  max-height:100% !important;
+  display:block;
+  margin-left:auto;
+  margin-right:auto; 
+}
+
+.press-image:hover {
+  filter:         none;
+  -webkit-filter: grayscale(0%);
+  -moz-filter:    grayscale(0%);
+  -ms-filter:     grayscale(0%);
+  -o-filter:      grayscale(0%);
+  opacity:        1.0;
+}
+
+
+/**
+Mode Bar
+**/
+
+/* Document Nav Bar */
+.document-nav-bar-element {
+  font-size: 1.3em;
+  line-height: 1.3em;
+  vertical-align: bottom;
+  display: inline;
+  padding-top: 14px;
+  color: #979797;
+  margin-left: 140px;
+  clear: none;
+}
+
+.document-nav-bar-element:first-of-type {
+  margin-left:0px;
+}
+
+.document-nav-bar-element img {
+  margin-right: 6px;
+}
+
+.document-nav-bar-element a {
+  vertical-align: bottom;
+  color: #979797;
+}
+
+.document-nav-bar-element.active a {
+  vertical-align: bottom;
+  color: #016FC4;
+}
+
+.document-nav-bar-element:hover a {
+  color: #016FC4;
+}
+
+.nav-bar-icon {
+  display: inline-block;
+  width:32px !important;
+  height:32px !important;
+  line-height:32px;
+  margin-bottom:-5px;
+  margin-right:10px;
+}
+
+.nav-bar-icon.getting-started {
+  background:url('/img/ic_start-white.png');
+  background-size:32px 32px;
+}
+
+.nav-bar-icon.getting-started.active,
+.document-nav-bar-element:hover .nav-bar-icon.getting-started {
+  background-image:url('/img/ic_start-blue.png');
+}
+
+.nav-bar-icon.integration-guide {
+  background:url('/img/ic_guide-white.png');
+  background-size:32px 32px;
+}
+
+.nav-bar-icon.integration-guide.active,
+.document-nav-bar-element:hover .nav-bar-icon.integration-guide {
+  background-image:url('/img/ic_guide-blue.png');
+}
+
+.nav-bar-icon.sample-code {
+  background:url('/img/ic_code-white.png');
+  background-size:32px 32px;
+}
+
+.nav-bar-icon.sample-code.active,
+.document-nav-bar-element:hover .nav-bar-icon.sample-code
+{
+  background-image:url('/img/ic_code-blue.png');
+}
+
+.nav-bar-icon.extend-experiences {
+  background:url('/img/ic_extend-white.png');
+  background-size:32px 32px;
+}
+
+.nav-bar-icon.extend-experiences.active,
+.document-nav-bar-element:hover .nav-bar-icon.extend-experiences
+{
+  background-image:url('/img/ic_extend-blue.png');
+}
+
+.nav-bar-icon.acquire-users {
+  background:url('/img/ic_users-white.png');
+  background-size:26px 32px;
+  background-repeat: no-repeat;
+}
+
+.nav-bar-icon.acquire-users.active,
+.document-nav-bar-element:hover .nav-bar-icon.acquire-users
+{
+  background-image:url('/img/ic_users-blue.png');
+}
+
+@media only screen and (max-width: 800px) {
+  .document-nav-bar-element {
+    font-size: 1.3em;
+    line-height: 1.3em;
+    vertical-align: bottom;
+    display: inline;
+    padding-top: 14px;
+    color: #979797;
+    margin-left: 40px;
+    clear: none;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+
+/*
+  .affix {
+    display: none !important;
+  }
+
+  .affix-top {
+    display: none !important;
+  }
+*/
+
+  .right-image {
+    display:block;
+    float:center;
+    margin-left:auto; margin-right:auto;
+    text-align:center;
+  }
+
+  .document-nav-bar.expandable {
+    height:160px;
+    float:center;
+    text-align:center;
+    padding-top: 6px;
+  }
+
+  .document-nav-bar-element {
+    clear: both;
+    display: block;
+    width: 220px !important;
+    margin-left:auto; margin-right:auto;
+    float:center;
+    text-align:left;
+  }
+
+  .document-nav-bar-element:first-of-type {
+    margin-left:auto; margin-right:auto;
+    float:center;
+  }
+
+  .nav-bar-icon {
+    margin-bottom:-8px;
+  }
+
+}
+
+/**
+
+**/

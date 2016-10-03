@@ -1,0 +1,337 @@
+/*** General ***/
+
+
+
+/*** Template 1 - L: Vertical image | R: Two horizontal images ***/
+
+.template-one {
+  padding: 48px 0; 
+}
+
+.template-one img {
+  margin-bottom: 20px;
+}
+
+/*** Template 2 - L: Vertical image | R: Heading, subheading & paragraph ***/
+
+.template-two {
+  display: flex;
+  align-items: center;
+  padding: 48px 0;
+}
+
+.template-two .hr {
+  border-bottom: 2px solid #016fc4;
+  width: 20%;
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+
+/*** Template 3 - L: Heading, subheading & paragraph | R: Two horizontal images ***/
+
+.template-three {
+  display: flex;
+  align-items: center;
+  padding: 48px 0;
+}
+
+.template-three .hr {
+  border-bottom: 2px solid #016fc4;
+  width: 20%;
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+
+.template-three img {
+  margin-bottom: 20px;
+}
+
+/*** Template 4 - Full-width image above a paragraph ***/
+
+.full-width {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.template-four {
+  padding-bottom: 64px; 
+}
+
+.template-four p {
+  margin-top: 64px;
+}
+
+/*** Template 5 - Three columns of icons with text centered ***/
+
+.template-five {
+  padding: 48px 0; 
+}
+
+.template-five img {
+  margin-bottom: 24px;
+}
+
+/*** Template 6 - Two columns of icons with text centered ***/
+
+.template-six {
+  padding: 48px 0; 
+}
+
+.template-six img {
+  margin-bottom: 24px;
+}
+
+/*** Template 7 - L: Heading & paragraph | R: Image ***/
+
+.template-seven {
+  display: flex;
+  align-items: center;
+  padding: 48px 0; 
+}
+
+.template-seven h2 {
+  margin-bottom: 24px;
+}
+
+/*** Template 8 - L: Image | R: Heading & paragraph ***/
+
+.template-eight {
+  display: flex;
+  align-items: center;
+  padding: 48px 0; 
+}
+
+.template-eight h2 {
+  margin-bottom: 24px;
+}
+
+/*** Template 9 - Square image w/ 2 smaller square images below centered ***/
+
+.template-nine {
+  padding: 48px 0; 
+}
+
+.template-nine img {
+  margin: 10px;
+  display: block;
+  width: 100%;
+}
+
+/*** Template 10 - L: Title & paragraph | R: Grid of 4 images ***/
+
+.template-ten {
+  display: flex;
+  align-items: center;
+  padding: 48px 0;
+}
+
+.template-ten h2 {
+  margin-bottom: 36px;
+}
+
+/*** Template 11 - L: Full bleed image | R: Title & paragraph ***/
+
+.template-eleven {
+  display: flex;
+  align-items: center;
+  padding: 48px 0; 
+}
+
+/*** Template 12 - Background image with white box overlay ***/
+
+.template-twelve {
+  padding: 48px 0;
+}
+
+.template-twelve h4 {
+  color: #4a4a4a;
+  text-align: center;
+}
+
+.template-twelve h5 {
+  color: #4a4a4a;
+  text-align: center;
+}
+
+.template-twelve .hr {
+  border-bottom: 2px solid #016fc4;
+  width: 20%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+
+.white-box {
+  background-color: #ffffff;
+  padding: 64px 48px 48px 48px;
+}
+
+/*** Template 13 - Title, subheading, paragraph ***/
+
+.template-thirteen {
+  padding: 48px 0;
+}
+
+.template-thirteen h1 {
+  margin: 64px 0 0 0;
+  font-family: 'Roboto';
+  font-weight: 300;
+}
+
+/*** Template 14 - Title, subheading, 2 column paragraph ***/
+
+.template-fourteen {
+  padding: 48px 0;
+}
+
+/*** Template 15 - Pullquote with left border ***/
+
+.template-fifteen {
+  padding: 48px 0;
+}
+
+.pullquote {
+  border-left: 4px solid #016fc4;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  color: #4a4a4a;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  padding-left: 20px;
+  margin-bottom: 36px; 
+}
+
+.template-fifteen h3 {
+  margin: 0 0 0 24px;
+}
+
+.template-fifteen .caption {
+  margin: 0 0 0 24px;
+}
+
+/*** Template 16 - Pullquote centered with image of source ***/
+
+.template-sixteen {
+  padding: 48px 0;
+}
+
+.template-sixteen img {
+  margin-top: 12px;
+}
+
+.quote {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  color: #4a4a4a;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  margin-bottom: 24px;
+}
+
+.template-sixteen h3 { 
+  margin-bottom: 0;
+}
+
+/*** Template 17 - L: Press img | R: Title, Date, Summary, Tertiary Button ***/
+
+.template-seventeen {
+  display: flex;
+  align-items: center;
+  padding: 48px 0;
+}
+
+.template-seventeen .caption {
+  margin-bottom: 18px;
+}
+
+.template-seventeen p {
+  margin-bottom: 6px;
+}
+
+/*** Template 18 - Icons list ***/
+
+.template-eighteen {
+  padding: 48px 0;
+}
+
+.template-eighteen img {
+  margin-bottom: 12px;
+}
+
+.template-eighteen a {
+  color: #4a4a4a;
+}
+
+.template-eighteen a:hover {
+  color: #016fc4;
+}
+
+/*** Footer ***/
+
+.footer {
+  background-color: #fbfbfb;
+  width: 100%;
+  margin-top: 64px;
+  padding: 48px 0 12px 0;
+  border-top: solid 2px #efefef;
+}
+
+.footer-nav {
+  list-style: none;
+  margin-left: 0;
+}
+
+.footer a {
+  font-weight: 300;
+  font-size: 1.0em;
+  color: #959595; 
+}
+
+.footer a:hover {
+  color: #4a4a4a;
+}
+
+.footer-nav li {
+  padding: 5px 0;
+  color: #959595;
+}
+
+/*** Media Queries ***/
+
+@media only screen and (min-width: 840px) {
+  .cover-photo {
+    background-image: url('img/img_office-background.png');
+    background-size: cover;
+    background-position: center center;
+    padding: 120px 0;
+    margin-bottom: 48px;
+  }
+  .pullquote, .quote {
+    font-size: 1.75em;
+    line-height: 1.5em; 
+  }
+}
+
+@media only screen and (max-width: 840px) {
+  .template-two, .template-three, .template-seven, .template-eight, .template-ten, .template-eleven, .template-seventeen {
+    display: block; 
+  }
+  .template-two img {
+    margin-bottom: 36px; 
+  }
+  .template-five img, .template-six img {
+    margin-top: 36px; 
+  }
+  .template-twelve {
+    background-color: #f5f5f5; 
+  }
+  .white-box {
+    background-color: transparent;
+    padding: 32px 24px 24px 24px;
+  }
+}

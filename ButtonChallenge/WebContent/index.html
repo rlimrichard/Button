@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!-- CSS retrieved on http://usebutton.com -->
+		<link rel="stylesheet" type="text/css" href="/ButtonChallenge/css/foundation.min.css" />
+		<link rel="stylesheet" type="text/css" href="/ButtonChallenge/css/legacy.css" />
+		<link rel="stylesheet" type="text/css" href="/ButtonChallenge/css/styleguide.css" />
+		<link rel="stylesheet" type="text/css" href="/ButtonChallenge/css/templates.css" />
+		<link rel="stylesheet" type="text/css" href="/ButtonChallenge/css/style.css" />
+		
+		<!-- images retrieved on http://usebutton.com -->
+		<link rel="icon" type="image/png" sizes="16x16" href="/ButtonChallenge/images/favicon-16x16.de9c2eb27623.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/ButtonChallenge/images/favicon-32x32.d740c72c64b1.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="/ButtonChallenge/images/favicon-96x96.9c8bdf95f679.png">
+		
+		<script type="text/javascript">
+		</script>
+		<title>Button Challenge</title>
+	</head>
+	<body>
+		
+		<script>		
+			/////////////////////////////////////////
+			//FB Calls
+			////////////////////////////////////////
+			<!-- Facebook Login - Include the JavaScript SDK once -->
+			window.fbAsyncInit = function() {
+			    FB.init({
+			      appId      : '1057253871054860', // App ID
+			      status     : true, // check login status
+			      cookie     : true, // enable cookies to allow the server to access the session
+			      xfbml      : true  // parse XFBML
+			    });
+			    FB.Event.subscribe('auth.authResponseChange', function(response){
+			 	 	if (response.status === 'connected') 
+			  		{
+			 	 		var str = "<br> Connected to Facebook <br>";
+			 	 			str += "<input type='submit' value='Logout' onclick='Logout();'/>";
+			 	 		
+			 	 		document.getElementById('status').style.color = "green";
+			 	 		document.getElementById("status").innerHTML = str; 
+				  		//SUCCESS
+				  	}	 
+					else if (response.status === 'not_authorized') 
+				    {
+						document.getElementById('status').style.color = "red";
+				    	document.getElementById("status").innerHTML =  "<br>Failed to Connect";
+						//FAILED
+				    } 
+					else 
+				    {
+				    	document.getElementById("status").innerHTML =  "<br>Logged Out";
+				    	//UNKNOWN ERROR
+				    }
+				});	
+			 };
+		    
+		   	function Login()
+			{
+				FB.login(function(response) {
+					
+					console.log(response);
+				   	if (response.authResponse) 
+				   	{
+				   		var accessToken = FB.getAuthResponse()['accessToken'];
+				   		localStorage.setItem("fbaccesstoken", accessToken);
+				   		console.log(accessToken);
+				   		
+				   		cleanMessage();
+				   		getPhoto();
+				    	getUserInfo();
+				    	buildSearchBar();
+				    	getAllPosts();
+				    } 
+				   	else 
+		  			{
+		  	    	 	console.log('User cancelled login or did not fully authorize.');
+		   			}
+				 },{scope:'user_posts,user_friends,public_profile', show_faces:'true', default_audience:'everyone'});
+			}
+
+		   function getUserInfo() {
+			    FB.api('/me', function(response) {
+			    	console.log(response);
+				 	var	str ="<p><b>Name</b> : "+response.name+"<br>";
+				  	str +="<b>id: </b>" + response.id+"<br>";
+				  	//str += "<b>token: </b>" + localStorage.getItem("fbaccesstoken") + "<br>";
+				  	document.getElementById("message").innerHTML += str;	  	    
+		    	});
+		    }
+
+			function getPhoto()
+			{
+			  	FB.api('/me/picture?type=normal', function(response) {
+				  var str="<br/><img src='"+response.data.url+"'/>";
+				  str+="<br/><br/><br/>"
+			  	  document.getElementById("message").innerHTML+=str;  	  	    
+		    	});
+			}
+
+			function Logout()
+			{
+				FB.logout(function(){document.location.reload();});
+				welcomeText();
+			}
+
+		  // Load the SDK asynchronously
+		  (function(d){
+		     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+		     if (d.getElementById(id)) {return;}
+		     js = d.createElement('script'); js.id = id; js.async = true;
+		     js.src = "//connect.facebook.net/en_US/all.js";
+		     ref.parentNode.insertBefore(js, ref);
+		   }(document));
+		  
+		  
+			 
+		  	///////////////////////////////////////////////////////
+			// ButtonChallenge API Calls
+			///////////////////////////////////////////////////////
+			//send a request
+			function sendRequest(url){
+				var xhttp = new XMLHttpRequest();
+			    xhttp.open("get", url, false);
+			    xhttp.setRequestHeader("Accept", "application/json");
+			    xhttp.send();
+			    
+			    if (xhttp.status == 500 ){
+			    	alert("ERROR 500: " + xhttp.statusText);
+			    }
+			    
+			    
+			    var response = JSON.parse(xhttp.responseText);
+			    console.log(response);
+			    return response;
+			}
+			  
+			//get All posts
+			function getAllPosts(){
+				var parameter = "?access_token=" + localStorage.getItem("fbaccesstoken");
+				var url = "/ButtonChallenge/rest/fbapi/allposts" + parameter;
+			  	var response = sendRequest(url);
+			    buildResultTab(response);
+			}
+		  
+		  
+			//get posts from a URL (used for next and previous page)
+		  	function tabOtherPage(url){
+				console.log(url);
+				var response = sendRequest(url);
+			    buildResultTab(response);
+		  	}
+		  
+			//search posts per date		  
+		  	function searchPostperDate()
+			{
+		  		var parameter = "?access_token=" + localStorage.getItem("fbaccesstoken");
+				parameter += "&date=" + document.getElementById("search").value;
+				var url = "/ButtonChallenge/rest/fbapi/postdate" + parameter;
+			  	var response = sendRequest(url);
+			  	
+			  	console.log(response);
+			    buildResultTab(response);
+			}
+			
+			//search the post by its postid
+			function searchPostperId()
+			{
+				var parameter = "?access_token=" + localStorage.getItem("fbaccesstoken");
+				parameter += "&id=" + document.getElementById("search").value;
+				var url = "/ButtonChallenge/rest/fbapi/post" + parameter;
+			  	var response = sendRequest(url);
+			  	
+			  	console.log(response);
+			    buildResultTab(response);
+			}
+			
+			//search all posts which contains the keyword
+			function searchPostperKeyword()
+			{
+				var parameter = "?access_token=" + localStorage.getItem("fbaccesstoken");
+				parameter += "&keyword=" + document.getElementById("search").value;
+				var url = "/ButtonChallenge/rest/fbapi/postkeyword" + parameter;
+			  	var response = sendRequest(url);
+			  	
+			  	console.log(response);
+			    buildResultTab(response);
+			}
+			
+			//search all posts posted by the user entered
+			function searchPostperFriend()
+			{
+				var parameter = "?access_token=" + localStorage.getItem("fbaccesstoken");
+				parameter += "&friend=" + document.getElementById("search").value;
+				var url = "/ButtonChallenge/rest/fbapi/postfriend" + parameter;
+			  	var response = sendRequest(url);
+			  	
+			  	console.log(response);
+			    buildResultTab(response);
+			}
+		  
+		  
+		  ///////////////////////////////////////////////////////
+		  // Display methods
+		  ///////////////////////////////////////////////////////  	
+			function welcomeText(){
+				cleanMessage();
+				var welcomeText = "<img src='/ButtonChallenge/images/ic_button-mark@2x.png' alt='Button'>";
+				welcomeText += "<h1>Button Challenge</h1>";
+				welcomeText += "<h3>Welcome to Button Challenge for Partner Engineer!</h3>";
+				welcomeText += "<p>Please login with your Facebook account</p><br />";
+				welcomeText += "<p>(By Login in you will allow ButtonChallenge to access to your posts and your photos)</p>";
+				welcomeText += "<img src='/ButtonChallenge/images/fb_login_small.png\' style='cursor:pointer;' onclick='Login()''/>";
+				welcomeText += "<br/>";
+				welcomeText += "<div id='status'></div>";
+				
+				document.getElementById("message").innerHTML += welcomeText;
+			}
+			
+			function cleanMessage(){
+				document.getElementById("message").innerHTML = "<br/>";
+			}
+			
+			function buildSearchBar()
+			{	
+				var str ="<p><br><br><input type='text' name='search' id='search' value='Search'/>";
+				str += "<button type='button' onclick='searchPostperId()'>Post per ID</button>";
+				str += "   <button type='button' onclick='searchPostperDate()'>Post per Date (YYYYMMDD)</button>";
+			  	str += "   <button type='button' onclick='searchPostperFriend()'>Post per Friend</button>";
+			  	str += "   <button type='button' onclick='searchPostperKeyword()'>Post per Keyword</button>";
+			  	str += "   <button type='button' onclick='getAllPosts()'>All Posts</button></p>";
+			  	document.getElementById("buttonLayout").innerHTML = str;
+			 }
+			
+			function buildResultTab(json)
+			{		
+				var str = ""
+				str += "<div id='tableDiv'>";
+				str += "	<table id='myTable'>";
+				str += "	  <thead>";
+				str += "		<tr>";
+				str += "		  <th data-priority='1'>Id</th>";
+				str += "		  <th data-priority='2'>Message</th>";
+				str += "		  <th data-priority='3'>Story</th>";
+				str += "		  <th data-priority='4'>Creation Time</th>";
+				str += "		  <th data-priority='5'>Posted by</th>";
+				str += "		</tr>";
+				str += "	  </thead>";
+				str += "	  <tbody>";
+				for (var i = 0; i < json.data.length; i++) {
+				    var currentPost = json.data[i];
+				    str += "		<tr>";
+					str += "		  <td><a target='_blank' href='http://fb.com/" + currentPost.id + "'>" + currentPost.id + "</a></td>";
+					str += "		  <td>" + currentPost.message + "</td>";
+					str += "		  <td>" + currentPost.story + "</td>";
+					str += "		  <td>" + currentPost.created_time + "</td>";
+					str += "		  <td>" + currentPost.from.name + "</td>";
+					str += "		</tr>";
+				}
+				str += "	  </tbody>";
+				str += "	</table>";
+				str += "  </div>";
+				str += "  <div data-role='footer'>";
+				
+				if (typeof(json.paging) != "undefined")
+				{
+					if (typeof(json.paging.previous) != "undefined")
+						str += "   <button type='button' onclick='tabOtherPage(\"" + json.paging.previous + "\")'>Previous</button>";
+					
+					if (typeof(json.paging.next) != "undefined")
+						str += "   <button type='button' onclick='tabOtherPage(\"" + json.paging.next + "\")'>Next</button>";
+				}
+				str += "  </div>";
+				str += "</div>";
+				
+				document.getElementById("resultTab").innerHTML = str;
+			}
+		</script>
+
+		<div class="accent-bar"></div>		
+		<div class="custom-header heading heading-dark">
+			<br/>
+			<div id="page">
+				<div id="message">
+					<img src="/ButtonChallenge/images/ic_button-mark@2x.png" alt="Button">
+					<h1>Button Challenge</h1>
+					<h3>Welcome to Button Challenge for Partner Engineer!</h3>
+					<p>Please login with your Facebook account</p>
+					<p>(By Login in you will allow ButtonChallenge to access to your posts and your photos)</p>
+					<br />
+					
+					<!-- for test to see if permission are displayed
+					<fb:login-button scope="user_posts,user_friends,public_profile,email" onlogin="Login();"></fb:login-button>
+					-->
+					<img src="/ButtonChallenge/images/fb_login_small.png" style="cursor:pointer;" onclick="Login()"/>
+				</div>	
+				<div id="buttonLayout"><br></div>
+				<div id="resultTab"><br></div>
+			</div>
+			<br>
+			<div id='footer'>
+				<div id="status"><br/></div>
+			</div>
+		</div>
+	</body>
+</html>
