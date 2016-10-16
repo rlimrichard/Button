@@ -285,8 +285,7 @@ public class Routing {
 	//Search all the posts from the keyword passed in parameters
 	private Posts SearchPostsForKeyword(Posts allPosts, String keyword)
 	{
-		if (keyword != null)
-			keyword = keyword.toUpperCase();
+		keyword = (keyword != null) ? keyword.toUpperCase() : "";
 		
 		Iterator<Post> it = allPosts.getData().iterator();
 		ArrayList<Post> postList = new ArrayList<Post>();
@@ -295,17 +294,10 @@ public class Routing {
 			Post currentPost = it.next();
 			String message = currentPost.getMessage();
 			String story = currentPost.getStory();
+			
+			message = (message != null) ? message.toUpperCase() : "";
+			story 	= (story != null) 	? story.toUpperCase() 	: "";
 
-			if (message != null)
-				message = message.toUpperCase();
-			else
-				message  = "";
-			
-			if (story != null)
-				story = story.toUpperCase();
-			else
-				story="";
-			
 			if (message.contains(keyword) || story.contains(keyword))
 				postList.add(currentPost);			
 		}
@@ -318,8 +310,7 @@ public class Routing {
 	//Search all the posts from friend name passed in parameters
 	private Posts SearchPostsForFriend(Posts allPosts, String friend)
 	{
-		if (friend != null)
-			friend = friend.toUpperCase();
+		friend = (friend != null) ? friend.toUpperCase() : "";
 		
 		Iterator<Post> it = allPosts.getData().iterator();
 		ArrayList<Post> postList = new ArrayList<Post>();
@@ -327,18 +318,11 @@ public class Routing {
 		{
 			Post currentPost = it.next();
 			User currentUser = currentPost.getFrom();
-			
 			String id  = currentUser.getId();
 			String name  = currentUser.getName();
-			if (id != null)
-				id = id.toUpperCase();
-			else
-				id  = "";
 			
-			if (name != null)
-				name = name.toUpperCase();
-			else
-				name="";
+			id 		= (id != null) 		? id.toUpperCase() 		: "";
+			name 	= (name != null) 	? name.toUpperCase() 	: "";
 			
 			if (id.contains(friend) || name.contains(friend))
 				postList.add(currentPost);			
